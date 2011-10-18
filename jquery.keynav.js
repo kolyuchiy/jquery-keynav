@@ -124,6 +124,7 @@ $.keynav.activateClosest = function(cur,quad) {
         }
     }
     if(found) $.keynav.setActive(closest, true);
+    return found;
 }
 
 $.keynav.goLeft = function () {
@@ -134,7 +135,9 @@ $.keynav.goLeft = function () {
         else
             return false;
         });
-        $.keynav.activateClosest(cur,quad);
+        if (! $.keynav.activateClosest(cur,quad)) {
+            $(cur).trigger('keynav:fail', [ 'left' ]);
+        }
 }
 
 $.keynav.goRight = function () {
@@ -145,7 +148,9 @@ $.keynav.goRight = function () {
         else
             return false;
         });
-        $.keynav.activateClosest(cur,quad);
+        if (!$.keynav.activateClosest(cur,quad)) {
+            $(cur).trigger('keynav:fail', [ 'right' ]);
+        }
 }
 
 $.keynav.goUp = function () {
@@ -156,7 +161,9 @@ $.keynav.goUp = function () {
         else
             return false;
         });
-        $.keynav.activateClosest(cur,quad);
+        if (!$.keynav.activateClosest(cur,quad)) {
+            $(cur).trigger('keynav:fail', [ 'up' ]);
+        }
 }
 
 $.keynav.goDown = function () {
@@ -167,7 +174,9 @@ $.keynav.goDown = function () {
         else
             return false;
         });
-        $.keynav.activateClosest(cur,quad);
+        if (!$.keynav.activateClosest(cur,quad)) {
+            $(cur).trigger('keynav:fail', [ 'down' ]);
+        }
 }
 
 $.keynav.activate = function () {
