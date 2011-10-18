@@ -61,6 +61,7 @@ $.fn.keynav_sethover = function(onClass,offClass) {
 $.keynav.reset = function() {
     var kn = $.keynav;
     kn.el = new Array();
+    kn.currentEl = null;
 }
 
 $.keynav.reg = function(e,onClass,offClass) {
